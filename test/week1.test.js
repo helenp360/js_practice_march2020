@@ -135,6 +135,7 @@ describe("getMeanScore", () => {
   test("returns the mean score from an array of scores", () => {
     expect(getMeanScore([8, 9, 7])).toBe(8);
     expect(getMeanScore([88, 86, 93])).toBe(89);
+    expect(getMeanScore([10, 40, -20, 10])).toBe(10);
   });
 
   test("returns the mean to 2 decimal places", () => {
@@ -153,6 +154,7 @@ describe("simpleFizzBuzz", () => {
 
   test("returns the number if the number is divisible by neither 3 nor 5", () => {
     expect(simpleFizzBuzz(4)).toBe(4);
+    expect(simpleFizzBuzz(0)).toBe(0);
   });
 
   test("returns 'fizzbuzz' if the number is divisible by 3 and 5", () => {

@@ -3,7 +3,7 @@ function capitalize(word) {
   if (word === ""){
     return "";
   } else {
-  return word[0].toUpperCase() + word.slice(1);
+    return word[0].toUpperCase() + word.slice(1);
   }
 }
 
@@ -72,7 +72,9 @@ function getMeanScore(scores) {
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  if (n % 3 === 0 && n % 5 === 0){
+  if (n === 0){
+    return 0;
+  } else if (n % 3 === 0 && n % 5 === 0){
     return "fizzbuzz";
   } else if (n % 3 === 0 && n % 5 !== 0){
     return "fizz";
