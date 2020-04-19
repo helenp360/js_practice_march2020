@@ -44,7 +44,7 @@ describe("getSquares", () => {
   });
 });
 
-describe("getTotalSubjects", () => {
+describe.only("getTotalSubjects", () => {
   test("returns 0 if no people have subjects", () => {
     const people = [
       { name: "Billy", subjects: [] },
