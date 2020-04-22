@@ -2,11 +2,7 @@ function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
   return nums.map(num => Math.pow(num, 2));
 }
-//["my", "variable"])).toBe("myVariable")
-//empty array
-//push words[0]
-//then i = 1 for loop
-//inside that loop capitalise first letter then return rest
+
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
   let newArr = [];
@@ -21,47 +17,30 @@ function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
   let subjectArr = [];
   for (let i = 0; i < people.length; i++){
-    if (people[i].subjects.length > 1){
-          subjectArr.push(people[i].subjects);
-    } 
-  }
-if (subjectArr.length < 1){
-  return 0;
-} else {
+    if (people[i].subjects.length >= 1){
+        subjectArr.push(people[i].subjects);
+      } 
+    }
+  if (subjectArr.length < 1){
+    return 0;
+  } else {
   return subjectArr.toString().split(",").length;
+  }
 }
-}
-
-// function getTotalSubjects(people) {
-//   if (people === undefined) throw new Error("people is required");
-//   let subjectArr = [];
-//   for (let i = 0; i < people.length; i++){
-//     if (people[i].subjects.length > 1){
-//           subjectArr.push(people[i].subjects);
-//     } 
-//   }
-//   console.log(subjectArr);
-// if (subjectArr.length < 1){
-//   return 0;
-// } else {
-//   return subjectArr.toString().split(",").length;
-// }
-// }
-
-// function getSubjects (person) {
-//   return Object.values(person);
-// }
-
-// console.log(people.map(getSubjects));
 
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
-  let valueArray = [];
-  for (let i = 0; i < menu.length; i++){
-    valueArray.push(Object.values(menu[i])); 
-  }
-  return valueArray.includes(ingredient);
+  let result;
+  let ingredientArray = menu.map(menuItem => menuItem.ingredients);
+  let mergedArray = [].concat.apply([], ingredientArray);
+  for (let i = 0; i < mergedArray.length; i++){
+    if (mergedArray[i] === ingredient){
+      return true;
+    } else {
+      result = false;
+    }
+  } return result;
 }
 
 function duplicateNumbers(arr1, arr2) {
