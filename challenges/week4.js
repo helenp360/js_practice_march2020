@@ -45,23 +45,48 @@ function getIntegers(nums) {
 
 function getCities(users) {
   if (!users) throw new Error("users is required");
-  // Your code here
+  let newArr = [];
+  for (let i = 0; i < users.length; i++){
+    newArr.push(users[i].data.city.displayName)
+  }
+  return newArr;
 }
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  let squareRoots = [];
+  for (let i = 0; i < nums.length; i++){
+    squareRoots.push(+Math.sqrt(nums[i]).toFixed(2));
+  }
+  return squareRoots;
 }
 
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  // Your code here
+  let newArr = [];
+  for (let i = 0; i < sentences.length; i++){
+    if (sentences[i].toLowerCase().includes(str)){
+      newArr.push(sentences[i]);
+    }
+  }
+  return newArr;
 }
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  // sort then return last one?
+  let sortedData = [];
+  let longestSides = [];
+  function compareFunction(a, b){
+    return a-b;
+  }
+  for (let i = 0; i < triangles.length; i++){
+    sortedData.push(triangles[i].sort(compareFunction))
+  }
+  for (let i = 0; i < sortedData.length; i++){
+    longestSides.push(sortedData[i][sortedData[i].length - 1])
+  }
+  return longestSides;
 }
 
 module.exports = {
