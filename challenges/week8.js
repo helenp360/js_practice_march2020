@@ -16,7 +16,23 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+  let myCountObj = {
+    1: 0,
+    0: 0
+  }
+  let myArr = str.split("");
+  let numOf1s = 0;
+  let numOf0s = 0;
+  for (let i = 0; i < myArr.length; i++){
+    if (myArr[i] === "1"){
+      numOf1s++;
+    } else if (myArr[i] === "0"){
+      numOf0s++;
+    }
+  }
+  myCountObj[1] = numOf1s;
+  myCountObj[0] = numOf0s;
+  return myCountObj;
 };
 
 const reverseNumber = n => {
@@ -31,18 +47,39 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  // Your code here!
+  let total = 0;
+  let newArr = arrs.flat();
+  for (let i = 0; i < newArr.length; i++){
+    total += newArr[i];
+  }
+  return total;
 };
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+  let newArr = arr.slice(1, arr.length - 1);
+  if (arr.length < 2){
+    return arr;
+  } else {
+    newArr.push(arr[0]);
+    newArr.unshift(arr[arr.length - 1]);
+    return newArr;
+  }
 };
 
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  // Your code here!
+  let objArr = Object.values(haystack);
+  let splitObjArr = [];
+  for (let i = 0; i < objArr.length; i++){
+    if (typeof objArr[i] !== "string"){
+      splitObjArr.push(objArr[i]);
+    } else {
+      splitObjArr.push(objArr[i].toLowerCase().split(" "));
+    }
+  }
+  return splitObjArr.flat().includes(searchTerm.toLowerCase());
 };
 
 const getWordFrequencies = str => {

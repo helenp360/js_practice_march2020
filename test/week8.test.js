@@ -81,7 +81,7 @@ describe("arrShift", () => {
   });
 });
 
-describe("findNeedle", () => {
+describe.only("findNeedle", () => {
   test("returns true if any of the properties of an object contain the specified string", () => {
     const obj1 = {
       name: "LINNMON",
