@@ -6,19 +6,37 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  if (!Array.isArray(arr)) throw new Error("arr is required");
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i] % 3 === 0 || arr[i] % 5 === 0){
+      sum += arr[i];
+    }
+  }
+  return sum;
 };
 
 /**
- * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
+ * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string.
+ * A valid DNA string may contain characters C, G, T or A only.
  * @param {String} str
  * @returns {Boolean}
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  if (typeof str !== "string") throw new Error("str is required");
+  var patt1 = /[^cgat]/gi;
+  let result = str.match(patt1);
+  if(result === null){
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /**
- * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
+ * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs.
+ * In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
  * @param {String} str
  * @returns {String}
  */
@@ -36,7 +54,9 @@ const isItPrime = n => {
 };
 
 /**
- * This function should receive a number and return an array of n arrays, each filled with n items. The parameter "fill" should be used as the filler of the arrays. For example, given parameters 3 and "foo" the resulting matrix should be:
+ * This function should receive a number and return an array of n arrays, each filled with n items.
+ * The parameter "fill" should be used as the filler of the arrays.
+ * For example, given parameters 3 and "foo" the resulting matrix should be:
  * [
  *   ["foo", "foo", "foo"],
  *   ["foo", "foo", "foo"],
@@ -66,6 +86,7 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  if (staff.length === 0) throw new Error("staff is required");
 };
 
 module.exports = {
