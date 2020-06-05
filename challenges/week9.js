@@ -42,15 +42,43 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  if (typeof str !== "string") throw new Error("str is required");
+  // if (!isValidDNA(str)) throw new Error("str must be a valid DNA string")
+  let dnaArray = str.split("");
+  let complementaryDNA = [];
+  for (let i = 0; i < dnaArray.length; i++){
+    if (dnaArray[i] === "C"){
+      complementaryDNA.push("G");
+    } else if (dnaArray[i] === "G"){
+      complementaryDNA.push("C");
+    } else if (dnaArray[i] === "A"){
+      complementaryDNA.push("T");
+    } else if (dnaArray[i] === "T"){
+      complementaryDNA.push("A");
+    }
+  }
+  return complementaryDNA.join("");
 };
 
 /**
- * This function should receive a number and return true/false depending on whether it is a prime number or not. A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
+ * This function should receive a number and return true/false depending on whether it is a prime number or not.
+ * A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
  * @param {Number} n
  * @returns {Boolean}
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  if (typeof n !== "number") throw new Error("n must be a number")
+  let arrOfDivisors = [];
+  for (let i = 2; i < n; i++){
+    arrOfDivisors.push(i);
+  }
+  for (let i = 0; i < arrOfDivisors.length; i++){
+    if (n % arrOfDivisors[i] === 0){
+      return false;
+    }
+  }
+  return true;
 };
 
 /**
@@ -78,7 +106,8 @@ const createMatrix = (n, fill) => {
  *  { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
  *  ...etc
  * ]
- * and a day of the week. For the café to run successfully, at least 3 staff members are required per day. The function should return true/false depending on whether there are enough staff scheduled for the given day.
+ * and a day of the week. For the café to run successfully, at least 3 staff members are required per day.
+ * The function should return true/false depending on whether there are enough staff scheduled for the given day.
  * @param {Array} staff
  * @param {String} day
  * @returns {Boolean}
