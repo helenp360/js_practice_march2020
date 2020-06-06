@@ -97,6 +97,7 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+  
 };
 
 /**
@@ -115,7 +116,17 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-  if (staff.length === 0) throw new Error("staff is required");
+  let count = 0;
+  for (let i = 0; i < staff.length; i++){
+    if (Object.values(staff[i]).flat().includes(day)){
+      count++;
+    }
+  }
+  if (count >= 3){
+    return true;
+  } else {
+    return false;
+  }
 };
 
 module.exports = {
