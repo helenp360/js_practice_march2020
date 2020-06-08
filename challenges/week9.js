@@ -25,7 +25,7 @@ const sumMultiples = arr => {
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
   if (typeof str !== "string") throw new Error("str is required");
-  var patt1 = /[^cgat]/gi;
+  let patt1 = /[^cgat]/gi;
   let result = str.match(patt1);
   if(result === null){
     return true;
@@ -43,21 +43,26 @@ const isValidDNA = str => {
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
   if (typeof str !== "string") throw new Error("str is required");
-  // if (!isValidDNA(str)) throw new Error("str must be a valid DNA string")
-  let dnaArray = str.split("");
-  let complementaryDNA = [];
-  for (let i = 0; i < dnaArray.length; i++){
-    if (dnaArray[i] === "C"){
-      complementaryDNA.push("G");
-    } else if (dnaArray[i] === "G"){
-      complementaryDNA.push("C");
-    } else if (dnaArray[i] === "A"){
-      complementaryDNA.push("T");
-    } else if (dnaArray[i] === "T"){
-      complementaryDNA.push("A");
+  let patt1 = /[^cgat]/gi;
+  let result = str.match(patt1);
+  if(result !== null){
+    throw new Error("str must be a valid DNA string");
+  } else {  
+    let dnaArray = str.split("");
+    let complementaryDNA = [];
+    for (let i = 0; i < dnaArray.length; i++){
+      if (dnaArray[i] === "C"){
+        complementaryDNA.push("G");
+      } else if (dnaArray[i] === "G"){
+        complementaryDNA.push("C");
+      } else if (dnaArray[i] === "A"){
+        complementaryDNA.push("T");
+      } else if (dnaArray[i] === "T"){
+        complementaryDNA.push("A");
+      }
     }
+    return complementaryDNA.join("");
   }
-  return complementaryDNA.join("");
 };
 
 /**
@@ -97,7 +102,15 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
-  
+  let innerArray = [];
+  for(let y = 0; y < n; y++){ 
+    innerArray[y] = fill;    
+  }  
+  let outerArray = [];
+  for(let x = 0; x < n; x++){   
+    outerArray[x] = innerArray; 
+  } 
+  return outerArray;
 };
 
 /**

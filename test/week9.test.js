@@ -40,7 +40,11 @@ describe("isValidDNA", () => {
     });
 
     test("returns false if not passed a valid DNA string", () => {
-        expect(isValidDNA("CGTA123")).toBe(false);
+        expect(isValidDNA("CGTAB123")).toBe(false);
+    });
+
+    test("returns true if passed a valid DNA string", () => {
+        expect(isValidDNA("CGTA")).toBe(true);
     });
 
     test("is not case sensitive", () => {
@@ -61,9 +65,11 @@ describe("getComplementaryDNA", () => {
         }).toThrow("str is required")
     });
 
-    // test("throws an error if passed a string that is not valid DNA", () => {
-    //     expect(getComplementaryDNA("BFDR")).toThrow("str must be a valid DNA string");
-    // });
+    test("throws an error if passed a string that is not valid DNA", () => {
+        expect(() => {
+            getComplementaryDNA("BFDR");
+        }).toThrow("str must be a valid DNA string")
+    });
 
     test("returns complementary DNA if passed a valid DNA string", () => {
         expect(getComplementaryDNA("TGAC")).toBe("ACTG");
@@ -112,9 +118,15 @@ describe("createMatrix", () => {
         const expected = [ ["foo"] ];
         expect(result).toEqual(expected);
     }); 
+
+    test("returns a matrix of 4 x 4 when passed 4", () => {
+        const result = createMatrix(1, "foo");
+        const expected = [ ["foo"] ];
+        expect(result).toEqual(expected);
+    }); 
 });
 
-describe.only("areWeCovered", () => {
+describe("areWeCovered", () => {
     test("it returns false if there are no staff at all", () => {
         expect(areWeCovered([], "Monday")).toBe(false);
         expect(areWeCovered([], "Tuesday")).toBe(false);
